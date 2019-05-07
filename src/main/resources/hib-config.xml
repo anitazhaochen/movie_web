@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+  http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-2.5.xsd
+">
+    <context:property-placeholder location="classpath*:ApplicationResources.properties"/>
+
+    <context:component-scan  base-package="com.imp4m"/>
+    <!-- 支持aop注解 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+
+
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName"
+                  value="${jdbc.driver}">
+        </property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property><!--QciQR24E7na4-->
+        <!--maxActive: 最大连接数量-->
+        <property name="maxActive" value="150"/>
+        <!--minIdle: 最小空闲连接-->
+        <property name="minIdle" value="5"/>
+        <!--maxIdle: 最大空闲连接-->
+        <property name="maxIdle" value="20"/>
+        <!--initialSize: 初始化连接-->
+        <property name="initialSize" value="30"/>
+        <!-- 连接被泄露时是否打印 -->
+        <property name="logAbandoned" value="true"/>
+        <!--removeAbandoned: 是否自动回收超时连接-->
+        <property name="removeAbandoned"  value="true"/>
+        <!--removeAbandonedTimeout: 超时时间(以秒数为单位)-->
+        <property name="removeAbandonedTimeout" value="10"/>
+        <!--maxWait: 超时等待时间以毫秒为单位 1000等于60秒-->
+        <property name="maxWait" value="1000"/>
+        <!-- 在空闲连接回收器线程运行期间休眠的时间值,以毫秒为单位. -->
+        <property name="timeBetweenEvictionRunsMillis" value="10000"/>
+        <!--  在每次空闲连接回收器线程(如果有)运行时检查的连接数量 -->
+        <property name="numTestsPerEvictionRun" value="10"/>
+        <!-- 1000 * 60 * 30  连接在池中保持空闲而不被空闲连接回收器线程-->
+        <property name="minEvictableIdleTimeMillis" value="10000"/>
+
+    </bean>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <!-- key的名字前面都要加hibernate. -->
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <property name="packagesToScan">
+            <value>com.imp4m.entity</value>
+        </property>
+    </bean>
+
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <!--配置一个JdbcTemplate实例-->
+    <bean id="jdbcTemplate"  class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <!-- 配置事务管理 -->
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="txManager" />
+    <aop:config>
+        <aop:pointcut expression="execution(public * com.imp4m.service.*.*(..))" id="businessService"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="businessService" />
+    </aop:config>
+    <tx:advice id="txAdvice" transaction-manager="txManager" >
+        <tx:attributes>
+      <!--      <tx:method name="list*"  read-only="true" propagation="NOT_SUPPORTED"  />
+            <tx:method name="load*"  read-only="true" propagation="NOT_SUPPORTED"  />-->
+            <!-- get开头的方法不需要在事务中运行 。
+            有些情况是没有必要使用事务的，比如获取数据。开启事务本身对性能是有一定的影响的-->
+            <tx:method name="*"/>    <!-- 其他方法在实务中运行 -->
+        </tx:attributes>
+    </tx:advice>
+
+</beans>
