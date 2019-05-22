@@ -484,7 +484,7 @@
                             <c:if test="${film!=null}">
                                 <div class="update">
                                     <div class="label">
-                                        <a class="show" href="javascript:;">${film.onDecade}</a>
+                                        <%--<a class="show" href="javascript:;">${film.onDecade}</a>--%>
                                         <a href="javascript:;" class="btn edit">编辑</a>
                                     </div>
                                     <div class="label-input">
@@ -509,64 +509,8 @@
                             </c:if>
                         </div>
                     </li>
-                    <li>
-                        <div class="left-con">状态:</div>
-                        <div class="right-con">
-                            <c:if test="${film!=null}">
-                                <div class="update">
-                                    <div class="label">
-                                        <a class="show" href="javascript:;">${film.status}</a>
-                                        <a href="javascript:;" class="btn edit">编辑</a>
-                                    </div>
-                                    <div class="label-input">
-                                        <input class="input update-input" placeholder="全集/更新第几集" autocomplete="off" el="div"
-                                               name="status" value="${film.status}"/>
-                                        <a href="javascript:;" class="btn save" film_id="${film.id}">保存</a>
-                                        <a href="javascript:;" class="btn cancel">取消</a>
-                                    </div>
-                                </div>
-                            </c:if>
 
-                            <c:if test="${film==null}">
-                                <input class="input addFilmInput" value="全集" placeholder="全集/更新第几集" autocomplete="off" id="status"/>
-                                <span style="color:red;">*</span>
-                            </c:if>
 
-                        </div>
-                    </li>
-                    <li>
-                        <div class="left-con">分辨率:</div>
-                        <div class="right-con">
-                            <c:if test="${film!=null}">
-                                <div class="update">
-                                    <div class="label">
-                                        <a class="show" href="javascript:;">${film.resolution}</a>
-                                        <a href="javascript:;" class="btn edit">编辑</a>
-                                    </div>
-                                    <div class="label-input">
-                                        <select name="resolution" class="input fixSelect update-input" el="select">
-                                            <option value="1080">1080p</option>
-                                            <option value="720">720p</option>
-                                            <option value="480">480p</option>
-                                        </select>
-
-                                            <%-- <div class="input update-input" contenteditable="true" name="name">${film.name}</div>--%>
-                                        <a href="javascript:;" class="btn save" film_id="${film.id}">保存</a>
-                                        <a href="javascript:;" class="btn cancel">取消</a>
-                                    </div>
-                                </div>
-                            </c:if>
-
-                            <c:if test="${film==null}">
-                                <select id="resolution" class="input fixSelect">
-                                    <option value="1080">1080p</option>
-                                    <option value="720">720p</option>
-                                    <option value="480">480p</option>
-                                </select>
-                                <span style="color:red;">*</span>
-                            </c:if>
-                        </div>
-                    </li>
                     <li>
                         <div class="left-con">类型:</div>
                         <div class="right-con">
@@ -605,6 +549,8 @@
                             </c:if>
                         </div>
                     </li>
+
+
                     <li>
                         <div class="left-con">演员:</div>
                         <div class="right-con">
@@ -689,160 +635,12 @@
                         </div>
                     </li>
                     <li>
-                        <div class="left-con">是否vip:</div>
-                        <div class="right-con">
-                            <c:if test="${film!=null}">
-                                <div class="update">
-                                    <div class="label">
-                                        <a class="show" href="javascript:;">
-                                            <c:if test="${film.isVip=='1'}">是</c:if>
-                                            <c:if test="${film.isVip=='0'}">否</c:if>
-                                        </a>
-                                        <a href="javascript:;" class="btn edit">编辑</a>
-                                    </div>
-                                    <div class="label-input">
-                                        <select name="isVip"  id="isVip"  class="input fixSelect update-input" el="select">
-                                            <c:if test="${film.isVip=='1'}">
-                                                <option value="">请选择</option>
-                                                <option value="1" selected>是</option>
-                                                <option value="0">否</option>
-                                            </c:if>
-                                            <c:if test="${film.isVip=='0'}">
-                                                <option value="">请选择</option>
-                                                <option value="1">是</option>
-                                                <option value="0" selected>否</option>
-                                            </c:if>
-                                        </select>
-                                        <a href="javascript:;" class="btn save" film_id="${film.id}">保存</a>
-                                        <a href="javascript:;" class="btn cancel">取消</a>
-                                    </div>
-                                </div>
-                            </c:if>
-
-                            <c:if test="${film==null}">
-                                <select name="isVip"  id="isVip" class="input fixSelect update-input" el="select">
-                                    <option value="">请选择</option>
-                                    <option value="1">是</option>
-                                    <option value="0">否</option>
-                                </select>
-                                <span style="color:red;">*</span>
-                            </c:if>
-                        </div>
-                    </li>
-                    <li>
                         <div class="left-con"></div>
                         <div class="right-con">
                             <c:if test="${film==null}">
                                 <a href="javascript:;" class="btn" id="addFilm-btn">添加影片</a>
                                 <a href="javascript:;" class="btn" onclick="clearAddFilmInput()">清空</a>
                             </c:if>
-                        </div>
-                    </li>
-
-                    <c:if test="${film!=null}">
-                        <li class="title">
-                            <div class="left-con">影片资源</div>
-                            <div class="right-con"><span class="zhuti"></span></div>
-                        </li>
-                        <c:if test="${res==null}">
-                            <li>
-                                <div style="width: auto;height: auto;margin: 20px auto;text-align: center;font-size: 12px;font-family: '微软雅黑';">
-                                    暂无资源
-                                </div>
-                            </li>
-                        </c:if>
-                    </c:if>
-                    <c:forEach items="${res}" var="res_list">
-                        <li>
-                            <ul class="zi_yuan_list">
-                                <li><a href="${res_list.link}" class="show" title="${res_list.name}">${res_list.name}</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" class="show">${res_list.linkType}</a>
-                                </li>
-                                <li><a href="javascript:;" class="show isUse">
-                                    <c:if test="${res_list.isUse==1}">
-                                        在线
-                                    </c:if>
-                                    <c:if test="${res_list.isUse==0}">
-                                        离线
-                                    </c:if>
-                                </a></li>
-                                <li><a href="javascript:;" class="show">${res_list.updateTime}</a></li>
-                                <li>
-                                    <c:if test="${res_list.isUse==1}">
-                                        <a href="javascript:;" class="btn updateIsUse" res_id="${res_list.id}">离线</a>
-                                    </c:if>
-                                    <c:if test="${res_list.isUse==0}">
-                                        <a href="javascript:;" class="btn updateIsUse" res_id="${res_list.id}">在线</a>
-                                    </c:if>
-                                    <a href="javascript:;" class="btn delRes" res_id="${res_list.id}">删除</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </c:forEach>
-                    <li class="title">
-                        <div class="left-con">添加资源</div>
-                        <div class="right-con"><span class="zhuti">
-                <c:if test="${film!=null}">
-                    <a href="javascript:;" class="show">影片主体：${film.id}</a>
-                </c:if>
-                </span></div>
-                    </li>
-                    <li>
-                        <div style="width: 200px;height: auto;margin: 10px auto;">
-                            <input id="file_upload_src" name="file_upload" type="file">
-                        </div>
-                        <div class="file-pre-file" style="margin: 10px auto;text-align: center;"></div>
-                    </li>
-                    <li>
-                        <div class="left-con">资源名:</div>
-                        <div class="right-con">
-                            <input class="input longInput addResInput" placeholder="请填写资源名" autocomplete="off" id="res_name"/>
-                            <span style="color:red;">*</span><span style="color:#ddd;">(若百度资源请将密码填在此处，无需填写名称)</span><a href="javascript:;"  class="btn" onclick="setMoban()">多资源模板</a></div>
-                    </li>
-
-                    <li>
-                        <div class="left-con">当前集数:</div>
-                        <div class="right-con">
-                            <select class="input fixSelect" id="res_episodes">
-                                <c:forEach var="i" begin="1" end="100" varStatus="li">
-                                    <option value="${li.index}">${li.index}</option>
-                                </c:forEach>
-                            </select>
-                            <span style="color:red;">*</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="left-con">链接:</div>
-                        <div class="right-con">
-                            <textarea class="input contentType addResInput" placeholder="请填写资源链接，并在下个选择栏选择正确的资源类型" autocomplete="off" id="res_link"></textarea>
-                            <span style="color:red;">*</span></div>
-                    </li>
-
-                    <li>
-                        <div class="left-con">链接类型:</div>
-                        <div class="right-con">
-                            <select class="input fixSelect" id="res_linkType">
-                                <option value="Flh">在线</option>
-                                <option value="ed2k">电驴</option>
-                                <option value="thunder">迅雷</option>
-                                <option value="http">离线</option>
-                                <option value="dupan">度盘</option>
-                                <option value="other">其它</option>
-                            </select>
-                            <span style="color:red;">*</span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="left-con"></div>
-                        <div class="right-con">
-                            <a href="javascript:;" class="btn" id="addRes-btn"
-                               <c:if test="${film!=null}">film_id="${film.id}"</c:if>>添加资源+</a>
-                            <a href="javascript:;" class="btn" onclick="clearAddResInput()">清空</a>
-                            <a href="javascript:;" class="alert-box">温馨提示：清空后可继续添加更多资源</a>
                         </div>
                     </li>
                 </ul>
@@ -950,7 +748,6 @@
             var is_vip = $("#isVip").val();
             if (name_val == ""
                     || image_val == ""
-                    || image_val == undefined
                     || onDecade_val == ""
                     || status_val == ""
                     || resolution_val == ""
@@ -986,8 +783,6 @@
                     alert("剧情为空");
                 } else if (image_val == undefined) {
                     alert("海报为空哟");
-                }else if (is_vip == undefined) {
-                    alert("请选择是否为VIP");
                 }
             } else {
                 //添加影片
@@ -1006,7 +801,7 @@
                     "&locName=" + locName_val +
                     "&loc_id=" + loc_id_val +
                     "&plot=" + plot_val+
-                    "&isVip=" + is_vip,
+                    "&isVip=" + "0",
                     success: addSuccess,
                     error: function () {
                         alert("系统繁忙！");
@@ -1197,9 +992,9 @@
         'uploadLimit': 0,
         'multi': false,//支持多文件上传
         "onUploadSuccess": uploadFileFinish,
-        'onFallback': function () {
-            alert('未检测到兼容版本的Flash.');
-        }
+        // 'onFallback': function () {
+        //     alert('未检测到兼容版本的Flash.');
+        // }
     });
 
 

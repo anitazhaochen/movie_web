@@ -216,21 +216,21 @@
         <div class="col">
             <div class="endpage clearfix">
                 <div class="ulike">
-                    <div class="title"><span>猜你喜欢</span></div>
-                    <ul class="img-list imglist clearfix">
-                        <c:forEach items="${films}" var="list" begin="0" end="8">
-                            <li><a class="play-img" href="xl/detail.html?film_id=${list.id}" title="${list.name}"
-                                   target="_blank">
-                                <img class="lazy" data-original="${list.image}" src="" alt="${list.name}"><i></i><em>
-                                <c:if test="${list.resolution=='1080'}">1280高清</c:if>
-                                <c:if test="${list.resolution!='1080'}">${list.resolution}P</c:if>
-                            </em>
-                            </a>
-                                <h5><a href="xl/detail.html?film_id=${list.id}" title="${list.name}"
-                                       target="_blank">${list.name}</a></h5></li>
-                        </c:forEach>
-                    </ul>
-                </div>
+                    <%--<div class="title"><span>猜你喜欢</span></div>--%>
+                    <%--<ul class="img-list imglist clearfix">--%>
+                        <%--<c:forEach items="${films}" var="list" begin="0" end="8">--%>
+                            <%--<li><a class="play-img" href="xl/detail.html?film_id=${list.id}" title="${list.name}"--%>
+                                   <%--target="_blank">--%>
+                                <%--<img class="lazy" data-original="${list.image}" src="" alt="${list.name}"><i></i><em>--%>
+                                <%--<c:if test="${list.resolution=='1080'}">1280高清</c:if>--%>
+                                <%--<c:if test="${list.resolution!='1080'}">${list.resolution}P</c:if>--%>
+                            <%--</em>--%>
+                            <%--</a>--%>
+                                <%--<h5><a href="xl/detail.html?film_id=${list.id}" title="${list.name}"--%>
+                                       <%--target="_blank">${list.name}</a></h5></li>--%>
+                        <%--</c:forEach>--%>
+                    <%--</ul>--%>
+                <%--</div>--%>
             </div>
         </div>
     </div>

@@ -201,45 +201,46 @@
             </div>
             <div class="col-sm-9">
             <div style="width:50%;float:left;height: auto;overflow: hidden;">
-                <span>一级分类</span><br/>
+                <%--<span>一级分类</span><br/>--%>
+                    <span>分类</span><br/>
                 <div contenteditable="true" class="catalog_name" style="display: inline-block;"></div>
                 <a href="javascript:;" class="add_CataLog_btn btn">添加</a><br/><br/>
 
-                <span>二级子分类</span>
-                <select class="cataLog_id">
-                    <c:forEach items="${cataLogList}" var="cataLogList_var">
-                        <option value="${cataLogList_var.id}">${cataLogList_var.name}</option>
-                    </c:forEach>
+                <%--<span>二级子分类</span>--%>
+                <%--<select class="cataLog_id">--%>
+                    <%--<c:forEach items="${cataLogList}" var="cataLogList_var">--%>
+                        <%--<option value="${cataLogList_var.id}">${cataLogList_var.name}</option>--%>
+                    <%--</c:forEach>--%>
 
-                </select><br/>
-                <div contenteditable="true" class="subClass_name" style="display: inline-block;"></div>
-                <a href="javascript:;" class="add_SubClass_btn btn">添加</a><br/><br/>
+                <%--</select><br/>--%>
+                <%--<div contenteditable="true" class="subClass_name" style="display: inline-block;"></div>--%>
+                <%--<a href="javascript:;" class="add_SubClass_btn btn">添加</a><br/><br/>--%>
 
-                <span>类型</span><br/>
-                <select class="cataLog_id_subClass">
-                    <c:forEach items="${cataLogList}" var="cataLogList_var">
-                        <option value="${cataLogList_var.id}">${cataLogList_var.name}</option>
-                    </c:forEach>
-                </select>
-                <select class="subClass_id"></select><br/>
-                <div contenteditable="true" class="type_name" style="display: inline-block;"></div>
-                <a href="javascript:;" class="add_Type_btn btn">添加</a><br/><br/>
-                <br/>
+                <%--<span>类型</span><br/>--%>
+                <%--<select class="cataLog_id_subClass">--%>
+                    <%--<c:forEach items="${cataLogList}" var="cataLogList_var">--%>
+                        <%--<option value="${cataLogList_var.id}">${cataLogList_var.name}</option>--%>
+                    <%--</c:forEach>--%>
+                <%--</select>--%>
+                <%--<select class="subClass_id"></select><br/>--%>
+                <%--<div contenteditable="true" class="type_name" style="display: inline-block;"></div>--%>
+                <%--<a href="javascript:;" class="add_Type_btn btn">添加</a><br/><br/>--%>
+                <%--<br/>--%>
 
-                <h2><span style="color:blue;">一级目录</span>--><span style="color:green;">二级目录</span>--><span style="color:#fd5c11;">类型</span></h2>
-                <c:forEach items="${cataLogList}" var="list">
-                    <span style="color:blue;">${list.name}</span><br/>
-                    <c:forEach items="${list.subClassList}" var="li">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">${li.name}</span>-->
-                        <c:forEach items="${typeList}" var="l">
-                            <c:if test="${li.id==l.subClass.id}">
-                                <span style="color:#fd5c11;">${l.name}</span>
-                            </c:if>
-                        </c:forEach>
-                        <br/>
-                    </c:forEach>
-                    <br/>
-                </c:forEach>
+                <%--<h2><span style="color:blue;">一级目录</span>--><span style="color:green;">二级目录</span>--><span style="color:#fd5c11;">类型</span></h2>--%>
+                <%--<c:forEach items="${cataLogList}" var="list">--%>
+                    <%--<span style="color:blue;">${list.name}</span><br/>--%>
+                    <%--<c:forEach items="${list.subClassList}" var="li">--%>
+                        <%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">${li.name}</span>-->--%>
+                        <%--<c:forEach items="${typeList}" var="l">--%>
+                            <%--<c:if test="${li.id==l.subClass.id}">--%>
+                                <%--<span style="color:#fd5c11;">${l.name}</span>--%>
+                            <%--</c:if>--%>
+                        <%--</c:forEach>--%>
+                        <%--<br/>--%>
+                    <%--</c:forEach>--%>
+                    <%--<br/>--%>
+                <%--</c:forEach>--%>
             </div>
             <div style="width:50%;float:left;height: auto;overflow: hidden;">
 
@@ -259,24 +260,24 @@
                 <a href="javascript:;" class="add_Decade_btn btn">添加</a><br/><br/>
 
 
-                <h2>地区-->级别-->年代</h2>
-                <br/>
-                <span>地区--></span>
-                <c:forEach items="${locList}" var="locList_list">
-                    ${locList_list.name}
-                </c:forEach>
-                <br/>
-                <span>级别--></span>
-                <c:forEach items="${levelList}" var="levelList_list">
-                    ${levelList_list.name}
-                </c:forEach>
-                <br/>
+                <%--<h2>地区-->级别-->年代</h2>--%>
+                <%--<br/>--%>
+                <%--<span>地区--></span>--%>
+                <%--<c:forEach items="${locList}" var="locList_list">--%>
+                    <%--${locList_list.name}--%>
+                <%--</c:forEach>--%>
+                <%--<br/>--%>
+                <%--<span>级别--></span>--%>
+                <%--<c:forEach items="${levelList}" var="levelList_list">--%>
+                    <%--${levelList_list.name}--%>
+                <%--</c:forEach>--%>
+                <%--<br/>--%>
 
-                <span>年代--></span>
-                <c:forEach items="${decadeList}" var="decadeList_list">
-                    ${decadeList_list.name}
-                </c:forEach>
-                <br/>
+                <%--<span>年代--></span>--%>
+                <%--<c:forEach items="${decadeList}" var="decadeList_list">--%>
+                    <%--${decadeList_list.name}--%>
+                <%--</c:forEach>--%>
+                <%--<br/>--%>
 
             </div>
         </div>

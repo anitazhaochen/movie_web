@@ -18,9 +18,9 @@
             <a href="catalog.html">
                 <li class="nav2-li">添加目录</li>
             </a>
-            <a href="vipCode.html">
-            <li class="nav2-li">VIP管理</li>
-            </a>
+            <%--<a href="vipCode.html">--%>
+            <%--<li class="nav2-li">VIP管理</li>--%>
+            <%--</a>--%>
         </ul>
     </li>
 </ul>
