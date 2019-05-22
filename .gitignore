@@ -4,6 +4,8 @@
 target/
 sql/
 .idea/
+src/main/webapp/public/static/.DS_Store
+src/main/webapp/public/static/upload/.DS_Store
 
 # Log file
 *.log
