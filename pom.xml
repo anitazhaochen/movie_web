@@ -47,7 +47,7 @@
         <jdk.version>1.8</jdk.version>
         <jetty.version>8.1.16.v20140903</jetty.version>
         <commons-lang3.version>3.1</commons-lang3.version>
-        <jackson.version>2.4.4</jackson.version>
+        <jackson.version>2.13.4.1</jackson.version>
         <!-- jdbc driver -->
         <jdbc.driver.groupId>mysql</jdbc.driver.groupId>
         <jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
